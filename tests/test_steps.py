@@ -9,10 +9,10 @@ def test_dynamic_steps():
     with allure.step("Открываем главную страницу"):
         browser.open("https://github.com")
 
-    with allure.step("Ищем репозитория"):
-        s(".header-search-input").click()
-        s(".header-search-input").send_keys("eroshenkoam/allure-example")
-        s(".header-search-input").submit()
+    with allure.step("Ищем репозиторий"):
+        s(".header-search-button").click()
+        s("#query-builder-test").send_keys("eroshenkoam/allure-example")
+        s("#query-builder-test").submit()
 
     with allure.step("Переходим по ссылке репозитория"):
         s(by.link_text("eroshenkoam/allure-example")).click()
@@ -39,9 +39,9 @@ def open_main_page():
 
 @allure.step("Ищем репозитория {repo}")
 def search_for_repository(repo):
-    s(".header-search-input").click()
-    s(".header-search-input").send_keys(repo)
-    s(".header-search-input").submit()
+    s(".header-search-button").click()
+    s("#query-builder-test").send_keys("eroshenkoam/allure-example")
+    s("#query-builder-test").submit()
 
 
 @allure.step("Переходим по ссылке репозитория {repo}")
